@@ -1,4 +1,4 @@
-﻿using EcommerceWeb.Models;
+using EcommerceWeb.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +14,9 @@ namespace EcommerceWeb.Data
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<EcommerceWeb.Models.Products>? Products { get; set; }
+
+        public DbSet<EcommerceWeb.Models.Discount>? Discount { get; set; }
+
 
     }
 }
