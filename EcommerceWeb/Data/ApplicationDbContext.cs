@@ -13,5 +13,7 @@ namespace EcommerceWeb.Data
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<EcommerceWeb.Models.Products>? Products { get; set; }
+
     }
 }
