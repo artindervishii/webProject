@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace EcommerceWeb.Models
+namespace WebProject.Models
 {
     public class Discount
     {
@@ -15,7 +15,7 @@ namespace EcommerceWeb.Models
         [Required]
         public int DiscountPercentage { get; set; }
 
-        public decimal AfterDiscountPrice => BeforeDiscountPrice - (BeforeDiscountPrice * DiscountPercentage / 100);
+        public decimal AfterDiscountPrice => BeforeDiscountPrice - BeforeDiscountPrice * DiscountPercentage / 100;
 
         public DateTime Date { get; set; } = DateTime.Now;
 

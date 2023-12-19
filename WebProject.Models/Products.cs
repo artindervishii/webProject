@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace EcommerceWeb.Models
+namespace WebProject.Models
 {
     public class Products
     {

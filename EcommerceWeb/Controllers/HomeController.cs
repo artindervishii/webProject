@@ -1,6 +1,7 @@
-﻿using EcommerceWeb.Models;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WebProject.Models;
 
 namespace EcommerceWeb.Controllers
 {

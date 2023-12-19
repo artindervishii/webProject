@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace EcommerceWeb.Data.Migrations
+namespace WebProject.WebProject.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Suadi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

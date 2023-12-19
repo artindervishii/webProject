@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace EcommerceWeb.Models
+namespace WebProject.Models
 {
     public class Category
     {
@@ -13,7 +13,7 @@ namespace EcommerceWeb.Models
         public string Name { get; set; }
 
         [DisplayName("DisplayOrder")]
-        [Range (1,100,ErrorMessage ="Display Order must be between 1 and 50")]
+        [Range(1, 100, ErrorMessage = "Display Order must be between 1 and 50")]
         public int DisplayOrder { get; set; }
 
         public DateTime CreatedDateTime { get; set; } = DateTime.Now;

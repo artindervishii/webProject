@@ -1,8 +1,9 @@
-using EcommerceWeb.Models;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebProject.Models;
 
-namespace EcommerceWeb.Data
+namespace WebProject.WebProject.DataAccess
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -13,9 +14,9 @@ namespace EcommerceWeb.Data
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<EcommerceWeb.Models.Products>? Products { get; set; }
+        public DbSet<Products>? Products { get; set; }
 
-        public DbSet<EcommerceWeb.Models.Discount>? Discount { get; set; }
+        public DbSet<Discount>? Discount { get; set; }
 
 
     }
