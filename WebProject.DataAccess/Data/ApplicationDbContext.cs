@@ -14,10 +14,6 @@ namespace WebProject.WebProject.DataAccess
 
         public DbSet<Category> Categories { get; set; }
 
-        public DbSet<Products>? Products { get; set; }
-
-        public DbSet<Discount>? Discount { get; set; }
-
 
     }
 }
