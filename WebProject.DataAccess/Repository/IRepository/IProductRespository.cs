@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebProject.Models;
 
 namespace WebProject.DataAccess.Repository.IRepository
 {
-    public interface IUnitOfWork
+    public interface IProductRespository :IRepository<Product>
     {
-
-        ICategoryRepository Category { get; }
-
-        IProductRespository Product { get; }
-
-
-        void Save();
-
+        void Update(Product obj);
 
     }
 }
