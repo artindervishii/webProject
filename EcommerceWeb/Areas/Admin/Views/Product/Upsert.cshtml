@@ -1,0 +1,149 @@
+﻿@model ProductVm
+
+<div class="card shadow mt-4">
+
+    <div class="card-header @(Model.Product.Id != 0 ? "bg-info" : "bg-success") ml-0 py-4">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">@(Model.Product.Id != 0 ? "Update" : "Create")  Product </ h2 >
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Product.Id" hidden />
+            <input asp-for="Product.ImageUrl" hidden />
+
+            <div class="row">
+                <div class="col-10">
+                    <div class="border pt-3 ">
+
+                        @*<div asp-validation-summary="All"></div>*@
+
+                        <div class="form-floating py-2 ">
+                            <input asp-for="Product.Title" id="title" class="form-control border-0 shadow" />
+                            <label asp-for="Product.Title" class="ms-2"></label>
+                            <span asp-validation-for="Product.Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating py-2 ">
+                            <input asp-for="Product.Description" id="description" class="form-control border-0 shadow" />
+                            <label asp-for="Product.Description" class="ms-2"></label>
+                            <span asp-validation-for="Product.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Product.Company" id="company" class="form-control border-0 shadow" />
+                            <label asp-for="Product.Company" class="ms-2"></label>
+                            <span asp-validation-for="Product.Company" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="Product.ListPrice" id="listprice" class="form-control border-0 shadow" />
+                                <label asp-for="Product.ListPrice" class="ms-2"></label>
+                                <span asp-validation-for="Product.ListPrice" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="Product.Price" id="price" class="form-control border-0 shadow" />
+                                <label asp-for="Product.Price" class="ms-2"></label>
+                                <span asp-validation-for="Product.Price" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="Product.Price20" id="price20" class="form-control border-0 shadow" />
+                                <label asp-for="Product.Price20" class="ms-2"></label>
+                                <span asp-validation-for="Product.Price20" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="Product.Price50" id="price50" class="form-control border-0 shadow" />
+                                <label asp-for="Product.Price50" class="ms-2"></label>
+                                <span asp-validation-for="Product.Price50" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <select asp-for="@Model.Product.CategoryId" asp-items="@Model.CategoryList" class="form-select border-0 shadow">
+                                <option value="" disabled selected>--Select Category--</option>
+                            </select>
+
+                            <label asp-for="Product.CategoryId" class="ms-2"></label>
+                            <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-floating py-2 col-12">
+                            <input type="file" id="uploadbox" name="file" class="form-control border-0 shadow" />
+                            <label asp-for="Product.ImageUrl" class="ms-2"></label>
+
+                        </div>
+
+                        <div class="row mb-2 mt-2">
+                            <div class="col-6 col-md-3">
+                                @if (Model.Product.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary bg-info form-control">Update </button>
+                                }
+                                else
+                                {
+                                    <button type="submit" onclick="return ValidateInput()" class="btn btn-primary bg-success form-control">Create </button>
+                                }
+
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="Product" asp-action="Index" class="btn btn-outline-primary border form-control ">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-2 ">
+
+                    <img src="@Model.Product.ImageUrl" width="100%"
+                         style="border-radius:5px border=1px solid #bbb9b9" />
+
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script>function ValidateInput(){
+
+								if(document.getElementById("uploadbox").value==""
+								|| document.getElementById("title").value==""
+								|| document.getElementById("company").value==""
+								|| document.getElementById("description").value==""
+								|| document.getElementById("listprice").value==""
+								|| document.getElementById("price").value==""
+								|| document.getElementById("price20").value==""
+								|| document.getElementById("price50").value=="" ){
+							Swal.fire({
+						  icon: "error",
+						  title: "Oops...",
+						  text: "Please Fill All The Fields!",
+						});
+						return false;
+				}
+				return true;
+
+			}</script>
+}

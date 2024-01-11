@@ -9,6 +9,7 @@ namespace WebProject.DataAccess.Repository.IRepository
 {
     public interface IProductRespository :IRepository<Product>
     {
+
         void Update(Product obj);
 
     }
