@@ -80,7 +80,7 @@ namespace EcommerceWeb.Areas.Admin.Controllers
                 if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(wwwRootPath, @"images/product");
+                    var uploads = Path.Combine(wwwRootPath, @"images\product\");
                     string extension = Path.GetExtension(file.FileName);
 
                     if (!string.IsNullOrEmpty(productVm.Product.ImageUrl))
@@ -98,7 +98,7 @@ namespace EcommerceWeb.Areas.Admin.Controllers
                     {
                         file.CopyTo(fileStreams);
                     }
-                    productVm.Product.ImageUrl = @"/images/product" + fileName + extension;
+                    productVm.Product.ImageUrl = @"/images/product/" + fileName + extension;
 
                 }
 

@@ -25,6 +25,7 @@ namespace WebProject.DataAccess.Repository
             {
                 objFromDb.Title = obj.Title;
                 objFromDb.Description = obj.Description;
+                objFromDb.Company = obj.Company;
                 objFromDb.Price = obj.Price;
                 objFromDb.Price20 = obj.Price20;
                 objFromDb.Price50 = obj.Price50;
