@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,54 +13,70 @@
     <link rel="stylesheet" href="~/EcommerceWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EcommerceWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
 
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <header>
-
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04" aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarColor04">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-
-                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
-
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
 
-                        <li class="nav-item">
-
-                            <a class="nav-link " asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
-
-                        </li>
-
-
-                        <li class="nav-item">
-
-                            <a class="nav-link " asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
-
-                        </li>
-
-
-
+                        @if (User.IsInRole(SD.Role_Admin))
+                        {
+                            <li class="nav-item dropdown">
+                                <div class="dropdown">
+                                    <span class="nav-link">Content Manager</span>
+                                    <div class="dropdown-content">
+                                        <a asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
+                                        <a asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
                     </ul>
-                    @* <form class="d-flex">
-                          <input class="form-control me-sm-2" type="search" placeholder="Search">
-                          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                        </form>*@
+                        
+                        
 
                     <partial name="_LoginPartial" />
-
                 </div>
             </div>
         </nav>
-
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             <partial name="_Notification" />
@@ -71,14 +89,12 @@
             &copy; 2023 - EcommerceWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js" asp-append-version="true"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
-
-
 </html>

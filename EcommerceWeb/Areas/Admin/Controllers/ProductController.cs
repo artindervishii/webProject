@@ -10,13 +10,15 @@ using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-
-
+using Microsoft.AspNetCore.Authorization;
+using WebProject.Utility;
 
 namespace EcommerceWeb.Areas.Admin.Controllers
 {
 
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
+
     public class ProductController : Controller
     {
 
