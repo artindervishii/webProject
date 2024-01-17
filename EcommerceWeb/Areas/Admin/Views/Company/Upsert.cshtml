@@ -1,0 +1,119 @@
+﻿@model Company
+
+<div class="card shadow mt-4">
+
+    <div class="card-header @(Model.Id != 0 ? "bg-info" : "bg-success") ml-0 py-4">
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">@(Model.Id != 0 ? "Update" : "Create")  Company </ h2 >
+</div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Id" hidden />
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="border pt-3 ">
+
+                        @*<div asp-validation-summary="All"></div>*@
+
+                        <div class="form-floating py-2 ">
+                            <input asp-for="name" id="title" class="form-control border-0 shadow" />
+                            <label asp-for="name" class="ms-2"></label>
+                            <span asp-validation-for="name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="PhoneNumber" id="company" class="form-control border-0 shadow" />
+                            <label asp-for="PhoneNumber" class="ms-2"></label>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="StreetAdress" id="listprice" class="form-control border-0 shadow" />
+                                <label asp-for="StreetAdress" class="ms-2"></label>
+                                <span asp-validation-for="StreetAdress" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="City" id="price" class="form-control border-0 shadow" />
+                                <label asp-for="City" class="ms-2"></label>
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="PostalCode" id="price20" class="form-control border-0 shadow" />
+                                <label asp-for="PostalCode" class="ms-2"></label>
+                                <span asp-validation-for="PostalCode" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating py-2 col-6">
+                                <input asp-for="State" id="price50" class="form-control border-0 shadow" />
+                                <label asp-for="State" class="ms-2"></label>
+                                <span asp-validation-for="State" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2 mt-2">
+                            <div class="col-6 col-md-3">
+                                @if (Model.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary bg-info form-control">Update </button>
+                                }
+                                else
+                                {
+                                    <button type="submit" onclick="return ValidateInput()" class="btn btn-primary bg-success form-control">Create </button>
+                                }
+
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="Company" asp-action="Index" class="btn btn-outline-primary border form-control ">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>          
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script>function ValidateInput(){
+
+								if(document.getElementById("uploadbox").value==""
+								|| document.getElementById("title").value==""
+								|| document.getElementById("company").value==""
+								|| document.getElementById("description").value==""
+								|| document.getElementById("listprice").value==""
+								|| document.getElementById("price").value==""
+								|| document.getElementById("price20").value==""
+								|| document.getElementById("price50").value=="" ){
+							Swal.fire({
+						  icon: "error",
+						  title: "Oops...",
+						  text: "Please Fill All The Fields!",
+						});
+						return false;
+				}
+				return true;
+
+			}</script>
+}

@@ -14,6 +14,9 @@ namespace WebProject.DataAccess.Repository.IRepository
         IProductRespository Product { get; }
 
 
+        ICompanyRepository Company { get; }
+
+
         void Save();
 
 

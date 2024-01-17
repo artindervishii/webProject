@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Identity.UI.V4;
+using Microsoft.AspNetCore.Identity.UI.V5;
 using Microsoft.EntityFrameworkCore;
 using WebProject.DataAccess.Repository;
 using WebProject.DataAccess.Repository.IRepository;

@@ -82,7 +82,7 @@ namespace EcommerceWeb.Areas.Admin.Controllers
                 if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString();
-                    var uploads = Path.Combine(wwwRootPath, @"images\product\");
+                    var uploads = Path.Combine(wwwRootPath, @"images/product/");
                     string extension = Path.GetExtension(file.FileName);
 
                     if (!string.IsNullOrEmpty(productVm.Product.ImageUrl))
@@ -145,39 +145,39 @@ namespace EcommerceWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-			List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
+            List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
             return Json(new { data = objProductList });
 
-		}
+        }
 
 
         [HttpDelete]
-		public IActionResult Delete(int? id)
-		{
+        public IActionResult Delete(int? id)
+        {
 
-			var productToBeDeleted = _unitOfWork.Product.Get(u => u.Id == id);
-			if (productToBeDeleted == null)
-			{
-				return Json(new { success = false, message = "Error while deleting" });
-			}
+            var productToBeDeleted = _unitOfWork.Product.Get(u => u.Id == id);
+            if (productToBeDeleted == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
 
-			var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath,
+            var oldImagePath = Path.Combine(_webHostEnvironment.WebRootPath,
                 productToBeDeleted.ImageUrl.TrimStart('\\'));
 
-			if (System.IO.File.Exists(oldImagePath))
-			{
-				System.IO.File.Delete(oldImagePath);
-			}
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
+            }
 
             _unitOfWork.Product.Remove(productToBeDeleted);
             _unitOfWork.Save();
 
-			return Json(new { success = true, message = "Deleted Successfuly" });
+            return Json(new { success = true, message = "Deleted Successfuly" });
 
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-	}
+    }
 }

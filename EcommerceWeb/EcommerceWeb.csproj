@@ -29,10 +29,14 @@
     <Folder Include="Controllers\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\images\product\" />
+    <Folder Include="Areas\Admin\Views\Company\" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
     <Content Remove="wwwroot\images\product\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Areas\Admin\Views\Company\" />
   </ItemGroup>
 </Project>
