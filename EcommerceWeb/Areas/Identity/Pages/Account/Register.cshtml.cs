@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using WebProject.DataAccess.Repository.IRepository;
+using WebProject.Models;
 using WebProject.Utility;
 using WebProject.WebProject.DataAccess;
 

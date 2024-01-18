@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebProject.WebProject.DataAccess;
 
@@ -11,9 +12,10 @@ using WebProject.WebProject.DataAccess;
 namespace WebProject.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240117145621_changeInShoppingCartModel")]
+    partial class changeInShoppingCartModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -354,7 +356,7 @@ namespace WebProject.DataAccess.Migrations
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("WebProject.Models.ApplicationUser", b =>
+            modelBuilder.Entity("WebProject.WebProject.DataAccess.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -447,7 +449,7 @@ namespace WebProject.DataAccess.Migrations
 
             modelBuilder.Entity("WebProject.Models.ShoppingCart", b =>
                 {
-                    b.HasOne("WebProject.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("WebProject.WebProject.DataAccess.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -464,7 +466,7 @@ namespace WebProject.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("WebProject.Models.ApplicationUser", b =>
+            modelBuilder.Entity("WebProject.WebProject.DataAccess.ApplicationUser", b =>
                 {
                     b.HasOne("WebProject.Models.Company", "Company")
                         .WithMany()

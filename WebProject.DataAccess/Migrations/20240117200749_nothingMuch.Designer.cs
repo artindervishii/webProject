@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebProject.WebProject.DataAccess;
 
@@ -11,9 +12,10 @@ using WebProject.WebProject.DataAccess;
 namespace WebProject.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240117200749_nothingMuch")]
+    partial class nothingMuch
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -335,6 +337,10 @@ namespace WebProject.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("ApplicationUseerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -354,7 +360,7 @@ namespace WebProject.DataAccess.Migrations
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("WebProject.Models.ApplicationUser", b =>
+            modelBuilder.Entity("WebProject.WebProject.DataAccess.ApplicationUserId", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -380,7 +386,7 @@ namespace WebProject.DataAccess.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasDiscriminator().HasValue("ApplicationUser");
+                    b.HasDiscriminator().HasValue("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -447,7 +453,7 @@ namespace WebProject.DataAccess.Migrations
 
             modelBuilder.Entity("WebProject.Models.ShoppingCart", b =>
                 {
-                    b.HasOne("WebProject.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("WebProject.WebProject.DataAccess.ApplicationUserId", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -464,7 +470,7 @@ namespace WebProject.DataAccess.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("WebProject.Models.ApplicationUser", b =>
+            modelBuilder.Entity("WebProject.WebProject.DataAccess.ApplicationUserId", b =>
                 {
                     b.HasOne("WebProject.Models.Company", "Company")
                         .WithMany()
