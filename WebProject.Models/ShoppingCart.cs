@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-
 namespace WebProject.Models
 {
 	public class ShoppingCart
@@ -22,6 +21,10 @@ namespace WebProject.Models
 		[ForeignKey("ApplicationUserId")]
 		[ValidateNever]
 		public ApplicationUser ApplicationUser { get; set; }
+
+
+		[NotMapped]
+		public double Price { get; set; }
 	}
 }
 

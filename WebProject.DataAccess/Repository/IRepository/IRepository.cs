@@ -11,7 +11,7 @@ namespace WebProject.DataAccess.Repository.IRepository
     {
         //T - Category
 
-        IEnumerable<T> GetAll(string? includeProperties = null);
+        IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter=null, string? includeProperties = null);
 
         T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false);
 
