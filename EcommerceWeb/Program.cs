@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Identity.UI.V4;
 using Microsoft.AspNetCore.Identity.UI.V5;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 using WebProject.DataAccess.Repository;
 using WebProject.DataAccess.Repository.IRepository;
 using WebProject.Utility;
@@ -14,6 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.Configure<StripeSetting>(builder.Configuration.GetSection("Stripe"));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddRazorPages();
@@ -48,7 +52,7 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseRouting();
 
 app.UseAuthentication();
