@@ -1,10 +1,12 @@
 ﻿
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
 using WebProject.DataAccess.Repository.IRepository;
 using WebProject.Models;
+using WebProject.Utility;
 
 namespace EcommerceWeb.Areas.Customer.Controllers
 {
@@ -58,14 +60,17 @@ namespace EcommerceWeb.Areas.Customer.Controllers
 
                 cartFromDb.Count += shoppingCart.Count;
                 _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
             }
             else
             {
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
+                _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
             }
             TempData["success"] = "Cart updated succesfully";
 
-            _unitOfWork.Save();
+            
 
             return RedirectToAction(nameof(Index));
         }

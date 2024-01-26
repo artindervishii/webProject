@@ -30,6 +30,7 @@
     <Folder Include="Controllers\" />
     <Folder Include="wwwroot\images\product\" />
     <Folder Include="Areas\Admin\Views\Company\" />
+    <Folder Include="Areas\Admin\Views\Order\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,5 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Company\" />
+    <None Remove="Areas\Admin\Views\Order\" />
   </ItemGroup>
 </Project>
