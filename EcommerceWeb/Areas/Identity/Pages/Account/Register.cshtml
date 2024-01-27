@@ -9,7 +9,14 @@
     <div class="card-header  bg-secondary bg-gradient ml-0  py-4">
         <div class="row">
             <div class="col-12 text-center">
+                @if (User.IsInRole(SD.Role_Admin))
+                    {
+                        <h2 class="py-2  text-white">Register - ADMIN PORTAL</h2>
+                    }
+                    else
+                    {
                 <h2 class="py-2  text-white">@ViewData["Title"]</h2>
+                    }
             </div>
         </div>
     </div>
@@ -73,6 +80,8 @@
                         <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
                     </div>
 
+                    @if (User.IsInRole(SD.Role_Admin))
+                        {
                     <div class="form-floating mb-3 col-md-6">
                         <select asp-for="Input.Role" asp-items="@Model.Input.RoleList" class="form-select">
                             <option disabled selected>--Select Role--</option>
@@ -86,14 +95,16 @@
                         </select>
 
                     </div>
+                        }
 
                     <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
                 </form>
             </div>
-            <div class="col-md-12 col-md-offset-2">
+            @if (!User.IsInRole(SD.Role_Admin))
+                {
+            <div class="col-md-12 col-md-offset-2 p-3 text-center">
                 <section>
                     <p class="divider-text d-flex py-3">or</p>
-                    <h3>Use another service to register.</h3>
                     @{
                         if ((Model.ExternalLogins?.Count ?? 0) == 0)
                         {
@@ -112,9 +123,9 @@
                                 <div>
                                     <p>
                                         @foreach (var provider in Model.ExternalLogins!)
-                                        {
+                                            {
                                             <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                        }
+                                            }
                                     </p>
                                 </div>
                             </form>
@@ -122,6 +133,7 @@
                     }
                 </section>
             </div>
+                        }
         </div>
     </div>
 </div>

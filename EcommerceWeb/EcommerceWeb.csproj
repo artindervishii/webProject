@@ -20,6 +20,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
     <PackageReference Include="Stripe.net" Version="43.11.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.21" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +32,9 @@
     <Folder Include="wwwroot\images\product\" />
     <Folder Include="Areas\Admin\Views\Company\" />
     <Folder Include="Areas\Admin\Views\Order\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\ShoppingCart\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,5 +44,8 @@
   <ItemGroup>
     <None Remove="Areas\Admin\Views\Company\" />
     <None Remove="Areas\Admin\Views\Order\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\ShoppingCart\" />
   </ItemGroup>
 </Project>

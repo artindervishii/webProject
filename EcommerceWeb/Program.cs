@@ -9,6 +9,7 @@ using WebProject.DataAccess.Repository.IRepository;
 using WebProject.Utility;
 using WebProject.WebProject.DataAccess;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -28,6 +29,11 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = $"/Identity/Account/Login";
     options.LogoutPath = $"/Identity/Account/Logout";
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+});
+builder.Services.AddAuthentication().AddFacebook(option =>
+{
+    option.AppId = "825767499355624";
+    option.AppSecret = "2f6d0bc0b0dff89f1c4d47748e7b44e6";
 });
 
 builder.Services.AddDistributedMemoryCache();
