@@ -110,13 +110,13 @@ namespace EcommerceWeb.Areas.Customer.Controllers
 			if (applicationUser.CompanyId.GetValueOrDefault() == 0)
 			{
 				//it is regular customer
-				ShoppingCartVm.OrderHeader.PaymentStatus = SD.PaymentStatusDelayPayment;
+				ShoppingCartVm.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
 				ShoppingCartVm.OrderHeader.OrderStatus = SD.StatusPending;
 			}
 			else
 			{
 				//it is a company user
-				ShoppingCartVm.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
+				ShoppingCartVm.OrderHeader.PaymentStatus = SD.PaymentStatusDelayPayment;
 				ShoppingCartVm.OrderHeader.OrderStatus = SD.StatusApproved;
 
 			}
